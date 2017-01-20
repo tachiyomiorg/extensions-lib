@@ -1,0 +1,48 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.1"
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+
+    lintOptions {
+        tasks.lint.enabled = false
+    }
+}
+
+dependencies {
+    provided "com.squareup.okhttp3:okhttp:3.5.0"
+    provided "io.reactivex:rxjava:1.2.4"
+    provided "org.jsoup:jsoup:1.10.1"
+    provided "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+}
+
+repositories {
+    mavenCentral()
+}
+
+task clearJar(type: Delete) {
+    delete 'build/outputs/library.jar'
+}
+
+task makeJar(type: Copy) {
+    from('build/intermediates/bundles/release/')
+    into('build/outputs/')
+    include('classes.jar')
+    rename ('classes.jar', 'library.jar')
+}
+
+makeJar.dependsOn(clearJar, build)
