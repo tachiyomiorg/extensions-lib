@@ -1,15 +1,19 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+
+version = '1.0'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.1"
+    buildToolsVersion "25.0.2"
 
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 25
         versionCode 1
-        versionName "1.0"
+        versionName version
     }
 
     buildTypes {
@@ -18,9 +22,6 @@ android {
         }
     }
 
-    lintOptions {
-        tasks.lint.enabled = false
-    }
 }
 
 dependencies {
@@ -34,15 +35,101 @@ repositories {
     mavenCentral()
 }
 
-task clearJar(type: Delete) {
-    delete 'build/outputs/library.jar'
+ext {
+    bintrayRepo = 'tachiyomi'
+    bintrayName = 'extensions-library'
+
+    publishedGroupId = 'eu.kanade.tachiyomi'
+    libraryName = 'tachiyomi-extensions-lib'
+    artifact = 'extensions-library'
+
+    libraryDescription = 'Tachiyomi library to create new catalogues'
+
+    siteUrl = 'https://github.com/inorichi/tachiyomi-extensions-lib'
+    gitUrl = 'https://github.com/inorichi/tachiyomi-extensions-lib.git'
+    githubRepository= 'inorichi/tachiyomi-extensions-lib'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
 }
 
-task makeJar(type: Copy) {
-    from('build/intermediates/bundles/release/')
-    into('build/outputs/')
-    include('classes.jar')
-    rename ('classes.jar', 'library.jar')
+group = publishedGroupId
+archivesBaseName = artifact
+
+install {
+    repositories.mavenInstaller {
+        pom.project {
+            packaging 'jar'
+            groupId publishedGroupId
+            artifactId artifact
+
+            name libraryName
+            description libraryDescription
+            url siteUrl
+
+            licenses {
+                license {
+                    name licenseName
+                    url licenseUrl
+                }
+            }
+            developers {
+                developer {
+                    id 'inorichi'
+                    name 'Javier Tomas'
+                }
+            }
+            scm {
+                connection gitUrl
+                developerConnection gitUrl
+                url siteUrl
+
+            }
+        }
+    }
 }
 
-makeJar.dependsOn(clearJar, build)
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.java.srcDirs
+}
+
+task makeJar(type: Jar) {
+    from zipTree('build/intermediates/bundles/release/classes.jar')
+}
+
+artifacts {
+    archives sourcesJar
+    archives makeJar
+}
+
+// Bintray
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+
+    configurations = ['archives']
+    pkg {
+        repo = bintrayRepo
+        name = bintrayName
+        desc = libraryDescription
+        websiteUrl = siteUrl
+        issueTrackerUrl = siteUrl+'/issues'
+        vcsUrl = gitUrl
+        licenses = allLicenses
+        githubRepo = githubRepository
+        publish = true
+        publicDownloadNumbers = true
+        version {
+            desc = libraryDescription
+            gpg {
+                sign = true
+                passphrase = properties.getProperty("bintray.gpg.password")
+            }
+        }
+    }
+}
