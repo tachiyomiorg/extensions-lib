@@ -10,6 +10,8 @@ interface SChapter {
 
     var chapter_number: Float
 
+    var scanlator: String?
+
     companion object {
         fun create(): SChapter {
             throw Exception("Stub!")
