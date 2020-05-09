@@ -1,7 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'com.github.dcendents.android-maven'
-apply plugin: 'com.jfrog.bintray'
 
 version = '1.2'
 
@@ -25,8 +24,8 @@ android {
 }
 
 dependencies {
-    provided "com.squareup.okhttp3:okhttp:3.8.1"
-    provided "io.reactivex:rxjava:1.3.0"
+    provided "com.squareup.okhttp3:okhttp:3.10.0"
+    provided "io.reactivex:rxjava:1.3.6"
     provided "org.jsoup:jsoup:1.10.2"
     provided "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
@@ -36,9 +35,6 @@ repositories {
 }
 
 ext {
-    bintrayRepo = 'tachiyomi'
-    bintrayName = 'extensions-library'
-
     publishedGroupId = 'eu.kanade.tachiyomi'
     libraryName = 'tachiyomi-extensions-lib'
     artifact = 'extensions-library'
@@ -51,7 +47,6 @@ ext {
 
     licenseName = 'The Apache Software License, Version 2.0'
     licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-    allLicenses = ["Apache-2.0"]
 }
 
 group = publishedGroupId
@@ -84,7 +79,6 @@ install {
                 connection gitUrl
                 developerConnection gitUrl
                 url siteUrl
-
             }
         }
     }
@@ -102,34 +96,4 @@ task makeJar(type: Jar) {
 artifacts {
     archives sourcesJar
     archives makeJar
-}
-
-// Bintray
-Properties properties = new Properties()
-properties.load(project.rootProject.file('local.properties').newDataInputStream())
-
-bintray {
-    user = properties.getProperty("bintray.user")
-    key = properties.getProperty("bintray.apikey")
-
-    configurations = ['archives']
-    pkg {
-        repo = bintrayRepo
-        name = bintrayName
-        desc = libraryDescription
-        websiteUrl = siteUrl
-        issueTrackerUrl = siteUrl+'/issues'
-        vcsUrl = gitUrl
-        licenses = allLicenses
-        githubRepo = githubRepository
-        publish = true
-        publicDownloadNumbers = true
-        version {
-            desc = libraryDescription
-            gpg {
-                sign = true
-                passphrase = properties.getProperty("bintray.gpg.password")
-            }
-        }
-    }
 }
