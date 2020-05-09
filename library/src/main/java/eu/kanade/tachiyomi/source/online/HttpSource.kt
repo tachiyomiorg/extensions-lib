@@ -51,7 +51,7 @@ abstract class HttpSource : CatalogueSource {
     /**
      * Headers builder for requests. Implementations can override this method for custom headers.
      */
-    protected open fun headersBuilder(): Headers.Builder {
+    open protected fun headersBuilder(): Headers.Builder {
         throw Exception("Stub!")
     }
 
@@ -77,14 +77,14 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param page the page number to retrieve.
      */
-    protected abstract fun popularMangaRequest(page: Int): Request
+    abstract protected fun popularMangaRequest(page: Int): Request
 
     /**
      * Parses the response from the site and returns a [MangasPage] object.
      *
      * @param response the response from the site.
      */
-    protected abstract fun popularMangaParse(response: Response): MangasPage
+    abstract protected fun popularMangaParse(response: Response): MangasPage
 
     /**
      * Returns an observable containing a page with a list of manga. Normally it's not needed to
@@ -105,14 +105,14 @@ abstract class HttpSource : CatalogueSource {
      * @param query the search query.
      * @param filters the list of filters to apply.
      */
-    protected abstract fun searchMangaRequest(page: Int, query: String, filters: FilterList): Request
+    abstract protected fun searchMangaRequest(page: Int, query: String, filters: FilterList): Request
 
     /**
      * Parses the response from the site and returns a [MangasPage] object.
      *
      * @param response the response from the site.
      */
-    protected abstract fun searchMangaParse(response: Response): MangasPage
+    abstract protected fun searchMangaParse(response: Response): MangasPage
 
     /**
      * Returns an observable containing a page with a list of latest manga updates.
@@ -128,14 +128,14 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param page the page number to retrieve.
      */
-    protected abstract fun latestUpdatesRequest(page: Int): Request
+    abstract protected fun latestUpdatesRequest(page: Int): Request
 
     /**
      * Parses the response from the site and returns a [MangasPage] object.
      *
      * @param response the response from the site.
      */
-    protected abstract fun latestUpdatesParse(response: Response): MangasPage
+    abstract protected fun latestUpdatesParse(response: Response): MangasPage
 
     /**
      * Returns an observable with the updated details for a manga. Normally it's not needed to
@@ -162,7 +162,7 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param response the response from the site.
      */
-    protected abstract fun mangaDetailsParse(response: Response): SManga
+    abstract protected fun mangaDetailsParse(response: Response): SManga
 
     /**
      * Returns an observable with the updated chapter list for a manga. Normally it's not needed to
@@ -180,7 +180,7 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param manga the manga to look for chapters.
      */
-    protected open fun chapterListRequest(manga: SManga): Request {
+    open protected fun chapterListRequest(manga: SManga): Request {
         throw Exception("Stub!")
     }
 
@@ -189,7 +189,7 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param response the response from the site.
      */
-    protected abstract fun chapterListParse(response: Response): List<SChapter>
+    abstract protected fun chapterListParse(response: Response): List<SChapter>
 
     /**
      * Returns an observable with the page list for a chapter.
@@ -206,7 +206,7 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param chapter the chapter whose page list has to be fetched.
      */
-    protected open fun pageListRequest(chapter: SChapter): Request {
+    open protected fun pageListRequest(chapter: SChapter): Request {
         throw Exception("Stub!")
     }
 
@@ -215,7 +215,7 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param response the response from the site.
      */
-    protected abstract fun pageListParse(response: Response): List<Page>
+    abstract protected fun pageListParse(response: Response): List<Page>
 
     /**
      * Returns an observable with the page containing the source url of the image. If there's any
@@ -233,7 +233,7 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param page the chapter whose page list has to be fetched
      */
-    protected open fun imageUrlRequest(page: Page): Request {
+    open protected fun imageUrlRequest(page: Page): Request {
         throw Exception("Stub!")
     }
 
@@ -242,7 +242,7 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param response the response from the site.
      */
-    protected abstract fun imageUrlParse(response: Response): String
+    abstract protected fun imageUrlParse(response: Response): String
 
     /**
      * Returns an observable with the response of the source image.
@@ -259,7 +259,7 @@ abstract class HttpSource : CatalogueSource {
      *
      * @param page the chapter whose page list has to be fetched
      */
-    protected open fun imageRequest(page: Page): Request {
+    open protected fun imageRequest(page: Page): Request {
         throw Exception("Stub!")
     }
 
