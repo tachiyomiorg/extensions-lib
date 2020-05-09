@@ -5,12 +5,12 @@ apply plugin: 'com.github.dcendents.android-maven'
 version = '1.2'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion 27
+    buildToolsVersion "29.0.3"
 
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 25
+        targetSdkVersion 27
         versionCode 1
         versionName version
     }
@@ -20,7 +20,6 @@ android {
             minifyEnabled false
         }
     }
-
 }
 
 dependencies {
@@ -41,9 +40,8 @@ ext {
 
     libraryDescription = 'Tachiyomi library to create new catalogues'
 
-    siteUrl = 'https://github.com/inorichi/tachiyomi-extensions-lib'
-    gitUrl = 'https://github.com/inorichi/tachiyomi-extensions-lib.git'
-    githubRepository= 'inorichi/tachiyomi-extensions-lib'
+    siteUrl = 'https://github.com/tachiyomiorg/extensions-lib'
+    gitUrl = 'https://github.com/tachiyomiorg/extensions-lib.git'
 
     licenseName = 'The Apache Software License, Version 2.0'
     licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
