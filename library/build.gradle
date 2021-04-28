@@ -9,7 +9,7 @@ android {
     buildToolsVersion "29.0.3"
 
     defaultConfig {
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 27
         versionCode 1
         versionName version
@@ -23,9 +23,9 @@ android {
 }
 
 dependencies {
-    provided "com.squareup.okhttp3:okhttp:3.10.0"
-    provided "io.reactivex:rxjava:1.3.6"
-    provided "org.jsoup:jsoup:1.10.2"
+    provided "com.squareup.okhttp3:okhttp:4.9.1"
+    provided "io.reactivex:rxjava:1.3.8"
+    provided "org.jsoup:jsoup:1.13.1"
     provided "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
 
