@@ -1,18 +1,15 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'com.github.dcendents.android-maven'
-
-version = '1.2'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 29
     buildToolsVersion "29.0.3"
 
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion 27
+        targetSdkVersion 29
         versionCode 1
-        versionName version
+        versionName '1.2'
     }
 
     buildTypes {
@@ -23,75 +20,13 @@ android {
 }
 
 dependencies {
-    provided "com.squareup.okhttp3:okhttp:4.9.1"
-    provided "io.reactivex:rxjava:1.3.8"
-    provided "org.jsoup:jsoup:1.13.1"
-    provided "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compileOnly "com.squareup.okhttp3:okhttp:4.9.1"
+    compileOnly "io.reactivex:rxjava:1.3.8"
+    compileOnly "org.jsoup:jsoup:1.13.1"
+    compileOnly "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 }
 
 repositories {
     mavenCentral()
-}
-
-ext {
-    publishedGroupId = 'eu.kanade.tachiyomi'
-    libraryName = 'tachiyomi-extensions-lib'
-    artifact = 'extensions-library'
-
-    libraryDescription = 'Tachiyomi library to create new catalogues'
-
-    siteUrl = 'https://github.com/tachiyomiorg/extensions-lib'
-    gitUrl = 'https://github.com/tachiyomiorg/extensions-lib.git'
-
-    licenseName = 'The Apache Software License, Version 2.0'
-    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-}
-
-group = publishedGroupId
-archivesBaseName = artifact
-
-install {
-    repositories.mavenInstaller {
-        pom.project {
-            packaging 'jar'
-            groupId publishedGroupId
-            artifactId artifact
-
-            name libraryName
-            description libraryDescription
-            url siteUrl
-
-            licenses {
-                license {
-                    name licenseName
-                    url licenseUrl
-                }
-            }
-            developers {
-                developer {
-                    id 'inorichi'
-                    name 'Javier Tomas'
-                }
-            }
-            scm {
-                connection gitUrl
-                developerConnection gitUrl
-                url siteUrl
-            }
-        }
-    }
-}
-
-task sourcesJar(type: Jar) {
-    classifier = 'sources'
-    from android.sourceSets.main.java.srcDirs
-}
-
-task makeJar(type: Jar) {
-    from zipTree('build/intermediates/bundles/release/classes.jar')
-}
-
-artifacts {
-    archives sourcesJar
-    archives makeJar
+    google()
 }
