@@ -2,9 +2,9 @@ package androidx.preference;
 
 import android.content.Context;
 
-public class CheckBoxPreference extends TwoStatePreference {
+public class SwitchPreferenceCompat extends TwoStatePreference {
 
-    public CheckBoxPreference(Context context) {
+    public SwitchPreferenceCompat(Context context) {
         super(context);
         throw new RuntimeException("Stub!");
     }
