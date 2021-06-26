@@ -1,6 +1,6 @@
 package eu.kanade.tachiyomi;
 
 public class BuildConfig {
-    public static final int VERSION_CODE = -1;
-    public static final String VERSION_NAME = "stub";
+    public static int VERSION_CODE = -1;
+    public static String VERSION_NAME = "stub";
 }
