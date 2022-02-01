@@ -6,7 +6,6 @@ plugins {
 
 android {
     compileSdkVersion 29
-    buildToolsVersion "29.0.3"
 
     defaultConfig {
         minSdkVersion 21
@@ -25,7 +24,7 @@ android {
 dependencies {
     compileOnly "com.squareup.okhttp3:okhttp:4.9.1"
     compileOnly "io.reactivex:rxjava:1.3.8"
-    compileOnly "org.jsoup:jsoup:1.13.1"
+    compileOnly "org.jsoup:jsoup:1.14.3"
     compileOnly "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 }
 
