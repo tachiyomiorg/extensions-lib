@@ -1,7 +1,6 @@
 package eu.kanade.tachiyomi.network.interceptor
 
 import okhttp3.HttpUrl
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import java.util.concurrent.TimeUnit
 
@@ -25,4 +24,4 @@ fun OkHttpClient.Builder.rateLimitHost(
     permits: Int,
     period: Long = 1,
     unit: TimeUnit = TimeUnit.SECONDS,
-): Interceptor = throw Exception("Stub!")
+): OkHttpClient.Builder = throw Exception("Stub!")
