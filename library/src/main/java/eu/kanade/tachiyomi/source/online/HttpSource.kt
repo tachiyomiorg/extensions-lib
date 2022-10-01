@@ -295,6 +295,7 @@ abstract class HttpSource : CatalogueSource {
     /**
      * Returns the url of the provided manga
      *
+     * @since extensions-lib 1.4
      * @param manga the manga
      * @return url of the manga
      */
@@ -305,6 +306,7 @@ abstract class HttpSource : CatalogueSource {
     /**
      * Returns the url of the provided chapter
      *
+     * @since extensions-lib 1.4
      * @param chapter the chapter
      * @return url of the chapter
      */
