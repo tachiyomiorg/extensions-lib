@@ -291,6 +291,28 @@ abstract class HttpSource : CatalogueSource {
     private fun getUrlWithoutDomain(orig: String): String {
         throw Exception("Stub!")
     }
+    
+    /**
+     * Returns the url of the provided manga
+     *
+     * @since extensions-lib 1.4
+     * @param manga the manga
+     * @return url of the manga
+     */
+    open fun getMangaUrl(manga: SManga): String {
+        throw Exception("Stub!")
+    }
+
+    /**
+     * Returns the url of the provided chapter
+     *
+     * @since extensions-lib 1.4
+     * @param chapter the chapter
+     * @return url of the chapter
+     */
+    open fun getChapterUrl(chapter: SChapter): String {
+        throw Exception("Stub!")
+    }
 
     /**
      * Called before inserting a new chapter into database. Use it if you need to override chapter
@@ -299,8 +321,7 @@ abstract class HttpSource : CatalogueSource {
      * @param chapter the chapter to be added.
      * @param manga the manga of the chapter.
      */
-    open fun prepareNewChapter(chapter: SChapter, manga: SManga) {
-    }
+    open fun prepareNewChapter(chapter: SChapter, manga: SManga) {}
 
     /**
      * Returns the list of filters for the source.
