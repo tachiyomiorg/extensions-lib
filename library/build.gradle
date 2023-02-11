@@ -5,13 +5,11 @@ plugins {
 }
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 33
 
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion 29
-        versionCode 1
-        versionName '1.2'
+        targetSdkVersion 33
     }
 
     buildTypes {
@@ -22,15 +20,11 @@ android {
 }
 
 dependencies {
-    compileOnly "com.squareup.okhttp3:okhttp:4.9.1"
-    compileOnly "io.reactivex:rxjava:1.3.8"
-    compileOnly "org.jsoup:jsoup:1.14.3"
-    compileOnly "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-}
-
-repositories {
-    mavenCentral()
-    google()
+    implementation "com.squareup.okhttp3:okhttp:5.0.0-alpha.11"
+    implementation "io.reactivex:rxjava:1.3.8"
+    implementation "io.reactivex:rxandroid:1.2.1"
+    implementation "org.jsoup:jsoup:1.15.3"
+    implementation "com.github.inorichi.injekt:injekt-core:65b0440"
 }
 
 task androidSourcesJar(type: Jar) {
