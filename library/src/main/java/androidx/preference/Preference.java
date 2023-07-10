@@ -30,6 +30,10 @@ public class Preference {
         throw new RuntimeException("Stub!");
     }
 
+    public void setVisible(boolean visible) {
+        throw new RuntimeException("Stub!");
+    }
+
     public String getKey() {
         throw new RuntimeException("Stub!");
     }
