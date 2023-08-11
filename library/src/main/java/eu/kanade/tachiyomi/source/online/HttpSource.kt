@@ -64,6 +64,10 @@ abstract class HttpSource : CatalogueSource {
      * needs to be changed but migrations can be avoided.
      *
      * @since extensions-lib 1.5
+     * @param name [String] the name of the source
+     * @param lang [String] the language of the source
+     * @param versionId [Int] the version ID of the source
+     * @return a unique ID for the source
      */
     protected fun generateId(name: String, lang: String, versionId: Int): Long {
         throw Exception("Stub!")
