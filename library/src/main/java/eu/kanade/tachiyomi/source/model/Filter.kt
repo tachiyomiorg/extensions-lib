@@ -1,5 +1,6 @@
 package eu.kanade.tachiyomi.source.model
 
+@Suppress("unused")
 sealed class Filter<T>(val name: String, var state: T) {
     open class Header(name: String) : Filter<Any>(name, 0)
     open class Separator(name: String = "") : Filter<Any>(name, 0)

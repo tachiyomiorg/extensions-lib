@@ -2,6 +2,7 @@ package eu.kanade.tachiyomi.source.model
 
 import android.net.Uri
 
+@Suppress("unused")
 class Page(
         val index: Int,
         val url: String = "",

@@ -1,5 +1,6 @@
 package eu.kanade.tachiyomi.source.model
 
+@Suppress("unused")
 interface SChapter {
 
     var url: String
@@ -17,5 +18,4 @@ interface SChapter {
             throw Exception("Stub!")
         }
     }
-
 }

@@ -4,6 +4,7 @@ import eu.kanade.tachiyomi.source.model.FilterList
 import eu.kanade.tachiyomi.source.model.MangasPage
 import rx.Observable
 
+@Suppress("unused")
 interface CatalogueSource : Source {
 
     /**

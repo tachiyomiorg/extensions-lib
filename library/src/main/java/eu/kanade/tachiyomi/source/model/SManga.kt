@@ -1,5 +1,6 @@
 package eu.kanade.tachiyomi.source.model
 
+@Suppress("unused")
 interface SManga {
 
     var url: String
@@ -35,5 +36,4 @@ interface SManga {
             throw Exception("Stub!")
         }
     }
-
 }
