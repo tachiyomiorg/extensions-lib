@@ -22,24 +22,48 @@ interface Source {
     val name: String
 
     /**
-     * Returns an observable with the updated details for a manga.
+     * Get the updated details for a manga.
      *
+     * @since extensions-lib 1.4
      * @param manga the manga to update.
+     * @return the updated manga.
      */
-    fun fetchMangaDetails(manga: SManga): Observable<SManga>
+    suspend fun getMangaDetails(manga: SManga): SManga = throw Exception("Stub!")
 
     /**
-     * Returns an observable with all the available chapters for a manga.
+     * Get all the available chapters for a manga.
      *
+     * @since extensions-lib 1.4
      * @param manga the manga to update.
+     * @return the chapters for the manga.
      */
-    fun fetchChapterList(manga: SManga): Observable<List<SChapter>>
+    suspend fun getChapterList(manga: SManga): List<SChapter> = throw Exception("Stub!")
 
     /**
-     * Returns an observable with the list of pages a chapter has.
+     * Get the list of pages a chapter has. Pages should be returned
+     * in the expected order; the index is ignored.
      *
+     * @since extensions-lib 1.4
      * @param chapter the chapter.
+     * @return the pages for the chapter.
      */
-    fun fetchPageList(chapter: SChapter): Observable<List<Page>>
+    suspend fun getPageList(chapter: SChapter): List<Page> = throw Exception("Stub!")
 
+    @Deprecated(
+        "Use the non-RxJava API instead",
+        ReplaceWith("getMangaDetails"),
+    )
+    fun fetchMangaDetails(manga: SManga): Observable<SManga> = throw Exception("Stub!")
+
+    @Deprecated(
+        "Use the non-RxJava API instead",
+        ReplaceWith("getChapterList"),
+    )
+    fun fetchChapterList(manga: SManga): Observable<List<SChapter>> = throw Exception("Stub!")
+
+    @Deprecated(
+        "Use the non-RxJava API instead",
+        ReplaceWith("getPageList"),
+    )
+    fun fetchPageList(chapter: SChapter): Observable<List<Page>> = throw Exception("Stub!")
 }
