@@ -26,6 +26,12 @@ interface ResolvableSource : Source {
     fun isChapterUri(uri: String): Boolean
 
     /**
+     * Called if canHandleUri is true. Checks if it's a chapter Uri.
+     *
+     * @since extensions-lib 1.5
+     */
+    fun isMangaUri(uri: String): Boolean
+    /**
      * Called if canHandleUri is true. Returns the corresponding SManga, if possible.
      *
      * @since extensions-lib 1.5
