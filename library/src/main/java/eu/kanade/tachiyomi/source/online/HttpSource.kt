@@ -185,6 +185,13 @@ abstract class HttpSource : CatalogueSource {
     }
 
     /**
+     * Parses the response from the site and returns a SChapterObject.
+     *
+     * @param response the response from the site.
+     */
+    protected abstract fun chapterPageParse(response: Response): SChapter
+
+    /**
      * Parses the response from the site and returns a list of chapters.
      *
      * @param response the response from the site.
