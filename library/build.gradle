@@ -47,10 +47,6 @@ project.afterEvaluate {
             release(MavenPublication) {
                 from components.release
                 artifact androidSourcesJar
-
-                groupId = "com.github.viplearner"
-                artifactId = "tachiyomi-extensions-lib"
-                version = "1.0"
             }
         }
     }
