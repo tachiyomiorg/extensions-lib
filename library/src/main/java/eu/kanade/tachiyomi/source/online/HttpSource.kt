@@ -185,7 +185,7 @@ abstract class HttpSource : CatalogueSource {
     }
 
     /**
-     * Parses the response from the site and returns a SChapterObject.
+     * Parses the response from the site and returns a SChapter Object.
      *
      * @param response the response from the site.
      */
